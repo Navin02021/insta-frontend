@@ -127,6 +127,7 @@ const StartPage = () => {
               {userData && (
                 <div className="user-data mt-4 animate__animated animate__fadeIn">
                   <h3 style={{ color: '#fccc63' }}>User Data</h3>
+                <div class="table-responsive'>
                   <table className="table table-bordered">
                     <tbody>
                       <tr>
@@ -192,6 +193,7 @@ const StartPage = () => {
                       </tr>
                     </tbody>
                   </table>
+                          </div>
                 </div>
               )}
             
