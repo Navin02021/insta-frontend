@@ -19,7 +19,7 @@ const StartPage = () => {
 
     setLoading(true);
 
-    fetch('http://20.40.55.78:3030/analyze_profile', {
+    fetch('https://insta.examcell.tech/analyze_profile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const StartPage = () => {
   };
 
   const getStatus = () => {
-    fetch('http://20.40.55.78/status')
+    fetch('https://insta.examcell.tech/status')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
