@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,7 +9,6 @@ const StartPage = () => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState('');
 
   const handleSearch = () => {
     if (!targetUsername.trim()) {
@@ -44,37 +43,6 @@ const StartPage = () => {
         setLoading(false);
       });
   };
-
-  const getStatus = () => {
-    fetch('https://insta.examcell.tech/status')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setStatusMessage('');
-        setStatusMessage(data.message);
-        console.log('Status message:', data.message);
-      })
-      .catch(error => {
-        console.error('Error fetching status:', error);
-        setStatusMessage('Error fetching status. Please try again.');
-      });
-  };
-
-  useEffect(() => {
-    let intervalId;
-
-    if (loading) {
-      intervalId = setInterval(getStatus, 300);
-    } else {
-      clearInterval(intervalId);
-    }
-
-    return () => clearInterval(intervalId);
-  }, [loading]);
 
   const handleInputChange = event => {
     setTargetUsername(event.target.value);
@@ -118,85 +86,84 @@ const StartPage = () => {
                   <div className="spinner-border text-primary me-2" role="status">
                     <span className="visually-hidden"></span>
                   </div>
-                  <div className="text-primary fw-bold">{statusMessage}</div>
                 </div>
               )}
-                {error && (
+              {error && (
                 <p className="text-danger mt-4 animate__animated animate__fadeIn">{error}</p>
               )}
               {userData && (
                 <div className="user-data mt-4 animate__animated animate__fadeIn">
                   <h3 style={{ color: '#fccc63' }}>User Data</h3>
-                <div class="table-responsive'>
-                  <table className="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <td><strong>Username</strong></td>
-                        <td>{userData.profile_data.username}</td>
-                        <td><strong>Is Fake</strong></td>
-                        <td className={userData.is_fake ? 'bg-danger' : 'bg-success'}>
-                          {userData.is_fake ? 'Yes' : 'No'}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><strong>Fake Percentile</strong></td>
-                        <td>
-                          <div className="d-flex justify-content-center align-items-center fake-percentile">
-                            <CircularProgressbar
-                              value={userData.fake_percentage}
-                              text={`${userData.fake_percentage}%`}
-                              styles={{
-                                path: { stroke: userData.is_fake ? '#ff4c4c' : '#3e98c7' },
-                                text: { fill: userData.is_fake ? '#ff4c4c' : '#3e98c7', fontSize: '16px' },
-                              }}
-                            />
-                          </div>
-                        </td>
-                        <td><strong>Profile Picture</strong></td>
-                        <td>
-                          <img
-                            src={userData.profile_data.profile_pic_data_uri}
-                            alt="Profile"
-                            className="img-fluid rounded mb-3"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><strong>Followers</strong></td>
-                        <td>{userData.profile_data.followers}</td>
-                        <td><strong>Following</strong></td>
-                        <td>{userData.profile_data.following}</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Posts</strong></td>
-                        <td>{userData.profile_data.posts}</td>
-                        <td><strong>Profile</strong></td>
-                        <td>{userData.profile_data.account_type}</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Bio</strong></td>
-                        <td>{userData.profile_data.bio}</td>
-                        <td><strong>Full Name</strong></td>
-                        <td>{userData.profile_data.full_name}</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Verification Status</strong></td>
-                        <td>
-                          {userData.profile_data.verification_status === 'Verified' ? (
-                            <div>
-                              {userData.profile_data.verification_status} <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'blue' }} />
+                  <div className="table-responsive">
+                    <table className="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <td><strong>Username</strong></td>
+                          <td>{userData.profile_data.username}</td>
+                          <td><strong>Is Fake</strong></td>
+                          <td className={userData.is_fake ? 'bg-danger' : 'bg-success'}>
+                            {userData.is_fake ? 'Yes' : 'No'}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Fake Percentile</strong></td>
+                          <td>
+                            <div className="d-flex justify-content-center align-items-center fake-percentile">
+                              <CircularProgressbar
+                                value={userData.fake_percentage}
+                                text={`${userData.fake_percentage}%`}
+                                styles={{
+                                  path: { stroke: userData.is_fake ? '#ff4c4c' : '#3e98c7' },
+                                  text: { fill: userData.is_fake ? '#ff4c4c' : '#3e98c7', fontSize: '16px' },
+                                }}
+                              />
                             </div>
-                          ) : userData.profile_data.verification_status}
-                        </td>
-                        <td><strong>Website</strong></td>
-                        <td>{userData.profile_data.website || 'Not Available'}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                          </div>
+                          </td>
+                          <td><strong>Profile Picture</strong></td>
+                          <td>
+                            <img
+                              src={userData.profile_data.profile_pic_data_uri}
+                              alt="Profile"
+                              className="img-fluid rounded mb-3"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Followers</strong></td>
+                          <td>{userData.profile_data.followers}</td>
+                          <td><strong>Following</strong></td>
+                          <td>{userData.profile_data.following}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Posts</strong></td>
+                          <td>{userData.profile_data.posts}</td>
+                          <td><strong>Profile</strong></td>
+                          <td>{userData.profile_data.account_type}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Bio</strong></td>
+                          <td>{userData.profile_data.bio}</td>
+                          <td><strong>Full Name</strong></td>
+                          <td>{userData.profile_data.full_name}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Verification Status</strong></td>
+                          <td>
+                            {userData.profile_data.verification_status === 'Verified' ? (
+                              <div>
+                                {userData.profile_data.verification_status} <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'blue' }} />
+                              </div>
+                            ) : userData.profile_data.verification_status}
+                          </td>
+                          <td><strong>Website</strong></td>
+                          <td>{userData.profile_data.website || 'Not Available'}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
-            
+
             </div>
           </div>
         </div>
