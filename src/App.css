@@ -1,40 +1,21 @@
-.App {
-  text-align: center;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  font-family: 'Roboto', Billabong;
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); /* Instagram gradient background */
+  background-size: cover; /* Ensure background covers entire viewport */
+  background-attachment: fixed; /* Prevent background from scrolling with content */
+  color: #fff; /* White text */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#root {
+  flex: 1; /* Fill remaining vertical space */
+  
 }
 
 tr{
@@ -46,3 +27,151 @@ td{
   color: black;
   border-radius: 5px;
 }
+
+.fake-percentile{
+  width: 150px;
+  align-items: center;
+}
+
+
+
+
+/* Navbar styles */
+.navbar {
+  background-color: #ffffff;
+ 
+}
+
+.navbar-brand {
+  color: #fff;
+  font-weight: bold;
+}
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+}
+
+/* Jumbotron styles */
+.jumbotron {
+  background-color: transparent !important;
+  padding: 50px 0;
+  text-align: center;
+}
+
+
+.display-4 {
+  color: #405DE6;
+}
+
+/* Feature box styles */
+/* Feature box container */
+.feature-box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Feature box styles */
+.feature-box {
+  background: #fff;
+  color: #000000;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  animation: scaleIn 1s ease-in-out;
+  flex: 1; /* Equal height for all feature boxes */
+}
+
+/* Animation for icons */
+.feature-box .fa-search,
+.feature-box .fa-users,
+.feature-box .fa-shield-alt {
+  color: #673AB7;
+  transition: transform 0.5s ease-out;
+}
+
+.feature-box:hover .fa-search,
+.feature-box:hover .fa-users,
+.feature-box:hover .fa-shield-alt {
+  transform: rotate(360deg);
+}
+
+/* Keyframe animations */
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
+/* Button animation */
+.btn-primary:hover {
+  animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+
+
+
+/* Footer styles */
+.footer {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  padding: 20px 0;
+  color: #fff;
+  animation: fadeIn 1s ease-in-out;
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
