@@ -18,7 +18,7 @@ const StartPage = () => {
 
     setLoading(true);
 
-    fetch('https://insta.examcell.tech/analyze_profile', {
+    fetch('http://192.168.54.112:5000/analyze_profile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
