@@ -19,7 +19,7 @@ const StartPage = () => {
 
     setLoading(true);
 
-    fetch('https://api.fakeidfinder.tech/check_account', {
+    fetch('https://api.fakeidfinder.tech/check-account', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
