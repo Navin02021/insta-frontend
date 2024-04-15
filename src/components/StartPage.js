@@ -57,26 +57,26 @@ const StartPage = () => {
 
   return (
     <div className="instagram-theme">
-      <nav className="navbar navbar-expand-lg navbar-light ">
-        <div className="container">
-          <Link className="navbar-brand" to="/"><img src="logo192.png" alt='logo'/>Instagram Fake ID Detector</Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+ <nav className="navbar navbar-expand-lg navbar-light ">
+  <div className="container">
+    <Link className="navbar-brand" to="/"><img src="logo192.png" alt='logo'/>Instagram Fake ID Detector</Link>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item ">
-                <Link className="nav-link" to="/">Home</Link>
-              </li>
-              <li className="nav-item active">
-                <Link className="nav-link" to="/start">search</Link>
-              </li>
-              
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item ">
+          <Link className="nav-link" to="/">Home</Link>
+        </li>
+        <li className="nav-item active">
+          <Link className="nav-link" to="/start">search</Link>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
     <div className="container-fluid mt-3 style={{ marginBottom: '400px !important' }}">
       <div className="row justify-content-center">
@@ -85,39 +85,37 @@ const StartPage = () => {
           <div className="card-header bg-gradient" style={{ background: 'linear-gradient(to right, #8a3ab9, #bc2a8d)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
     <h5 className="text-white">User Search</h5>
 </div>
+<div className="card-body">
+  <div className="row mb-3">
+    <div className="col-md-8 col-sm-12 p-2"> {/* Use col-md-8 for medium and larger screens, and col-sm-12 for smaller screens */}
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Enter Username"
+        value={targetUsername}
+        onChange={handleInputChange}
+      />
+    </div>
+    <div className="col-md-4 col-sm-12 d-flex justify-content-end"> {/* Use col-md-4 for medium and larger screens, and col-sm-12 for smaller screens */}
+      <button
+        className="btn p-2 m-2"
+        type="button"
+        onClick={handleSearch}
+        style={{ backgroundColor: 'rgba(24, 119, 242, 1)', color: 'rgba(255,255,255,1)' }}
+      >
+        <i className="fas fa-search me-1"></i> Search
+      </button>
+      <button
+        className="btn p-2 m-2"
+        type="button"
+        onClick={handleClear}
+        style={{ backgroundColor: 'rgba(239, 239, 239, 1)', color: 'rgba(0,0,0,1)' }}
+      >
+        <i className="fas fa-times me-2"></i> Clear
+      </button>
+    </div>
+  </div>
 
-            <div className="card-body">
-           
-           
-            <div className="row mb-3">
-  <div className="col-8 p-2">
-    <input
-      type="text"
-      className="form-control "
-      placeholder="Enter Username"
-      value={targetUsername}
-      onChange={handleInputChange}
-    />
-  </div>
-  <div className="col-4 d-flex justify-content-end">
-    <button
-      className="btn p-2 m-2"
-      type="button"
-      onClick={handleSearch}
-      style={{ backgroundColor: 'rgba(24, 119, 242, 1)', color: 'rgba(255,255,255,1)' }}
-    >
-      <i className="fas fa-search me-1"></i> Search
-    </button>
-    <button
-      className="btn p-2 m-2"
-      type="button"
-      onClick={handleClear}
-      style={{ backgroundColor: 'rgba(239, 239, 239, 1)', color: 'rgba(0,0,0,1)' }}
-    >
-      <i className="fas fa-times me-2"></i> Clear
-    </button>
-  </div>
-</div>
 
 
 
@@ -146,7 +144,7 @@ const StartPage = () => {
             </td>
           </tr>
           <tr style={{ backgroundColor: '#f0f0f0' }}>
-            <td><strong>Fake percentage <i class="fas fa-percentage    "></i></strong></td>
+            <td><strong>Fake percentage <i className="fas fa-percentage    "></i></strong></td>
             <td>
               <div className="d-flex justify-content-center align-items-center fake-percentile">
                 <CircularProgressbar
