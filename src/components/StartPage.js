@@ -87,7 +87,7 @@ const StartPage = () => {
 </div>
 <div className="card-body">
   <div className="row mb-3">
-    <div className="col-md-8 col-sm-12 p-2"> {/* Use col-md-8 for medium and larger screens, and col-sm-12 for smaller screens */}
+    <div className="col-md-8 col-sm-12 p-2"> 
       <input
         type="text"
         className="form-control"
