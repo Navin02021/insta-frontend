@@ -19,12 +19,12 @@ const StartPage = () => {
 
     setLoading(true);
 
-    fetch('http://192.168.54.112:5000/analyze_profile', {
+    fetch('https://api.fakeidfinder.tech/check_account', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ target_username: targetUsername }),
+      body: JSON.stringify({username: targetUsername }),
     })
       .then(response => {
         if (!response.ok) {
